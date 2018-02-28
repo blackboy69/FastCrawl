@@ -1,0 +1,324 @@
+<?
+// An amazing class  to parse addresses.
+// Written by Byron Whitlock
+// byronwhitlock@gmail.com
+// inspired from Tim Sullivans post at http://stackoverflow.com/questions/16413/parse-usable-street-address-city-state-zip-from-a-string#16444
+//
+include_once "scrape/utils.inc";
+Class Address_Parser
+{
+		private $stateRegex = "[A-Za-z]{2}";
+		private $zipRegex = "(([0-9]{3,5}(-[0-9]{4})?)|([ABCEGHJKLMNPRSTVXY][0-9][A-Z] *[0-9][A-Z][0-9]))";
+
+	// takes an address string like the following and returns
+	// an array with keys: 'Full Address' City State Zip Country Phone
+
+	// 5008 Connecticut Avenue Northwest, Washington DC, USA, 20001
+	// Erie, PA, USA, 16506  ---- no address
+	// 699 Ten Mile Dr Frisco,CO  
+	// 123 address with no spaces st My City CA
+	// 4900 S. College Avenue, # 120, Fort Collins, CO 80525
+	// 452 Torbay Road St John’s, Newfoundland
+
+	
+	public function parse($address,$looseChecking=false) // do not set loose checking this is set recursivly interernally
+	{	
+		$data =  array();
+		$address = trim($address);
+		$data['Raw Address'] = $address;
+
+		if (empty($address))
+		{
+			return array();
+		}
+		
+		//setup better state regex. set to default for faster parsing
+		$this->stateRegex = join("|", $this->states);
+
+		if (is_array($address))
+		{
+			$address = join(",", array_flatten($address));
+		}
+		else 	if ($looseChecking == true)
+		{
+			foreach($this->streetSuffixes  as $c )
+			{
+				// we only want one after the first one.
+				$address = str_ireplace(" $c "," $c, ",$address);
+			}
+			foreach($this->states as $c  )
+			{
+				$address = str_ireplace(" $c "," , $c ,",$address);
+			}
+			foreach($this->countries  as $c )
+			{
+				$address = str_ireplace($c," , $c, ",$address);
+			}
+		}
+
+		// we need to normalize the delimiter
+		// lets use , for a delimiter.
+		$address = str_replacE("><","> <",$address);
+		$address = strip_tags(str_replace("<br></br>", ",", $address));
+		$address = strip_tags(str_replace("<div></div>", ",", $address));
+
+		$address = str_replace("<br>", "," , $address);
+		$address = str_replace("\n"  , "," , $address);		
+		$address = preg_replace("/\\s+/"," ",$address);
+	
+		$suite = "";
+
+		if (substr_count($address,",") < 2)
+		{
+			foreach($this->streetSuffixes as $suffix)
+			{
+				
+				$new_add = str_ireplace(" $suffix. "," $suffix, ", $address);
+				$new_add = str_ireplace(" $suffix "," $suffix, ", $new_add);
+				
+				if ($new_add != $address)
+				{
+					$address =$new_add;
+					break;
+				}
+			}
+		}
+	
+		
+		// add a delimiter for extension part of the address.
+		// http://pe.usps.com/text/pub28/28c2_001.html
+		/*	Secondary Address Unit Designators */
+		foreach($this->extensionSuffixes as $suffix)
+		{
+			$regex = "/\s$suffix(\s*([0-9a-z\-#])+)\s/i";
+			if (preg_match($regex,$address))
+			{
+				$address = preg_replace($regex,", $suffix\\1 ,",$address);
+			}
+		}
+		$pieces = explode(',',$address);
+		//log::info($address);
+//		log::info($pieces);
+		// iterate through it backwards. item 0 is the string
+		for ($i = sizeof($pieces)-1; $i>-1 ; $i--)
+		{			
+
+			$piece = trim($pieces[$i]);
+
+			if (empty($piece))
+			{
+				continue;
+			}
+
+			if (! isset($data['Zip']) && $this->isZip($piece))
+			{
+				$data['Zip'] = $piece;
+				$position['Zip'] = $i;
+				continue;
+			}
+
+			if (! isset($data['State']) && $this->isState($piece))
+			{
+				$data['State'] = $piece;
+				$position['State'] = $i;
+				continue;
+			}
+
+			if (! isset($data['Country']) && $this->isCountry($piece))
+			{
+				$data['Country'] = $piece;
+				$position['Country'] = $i;
+				continue;
+			}
+
+
+			// sometimes there is no delimiter between the state and the zip. check for that here.
+			if (! isset($data['State']) &&
+				 ! isset($data['Zip']) &&
+					preg_match("/^(".$this->stateRegex.") +(".$this->zipRegex.")/i", $piece,$matches))
+			{
+				$state = $matches[1];
+				$zip = $matches[2];
+				if ($this->isState($state) && $this->isZip($zip))
+				{
+					$data['State'] = $state;
+					$data['Zip'] =  $zip;
+					continue;
+				}
+			}
+
+			// sometimes there is no delimiter between the city and the state. check for that here.
+			if (! isset($data['State']) &&
+				 ! isset($data['City']) &&
+					preg_match("/^(.+) (".$this->stateRegex.")$/i", $piece,$matches))
+			{
+				
+				$city = $matches[1];
+				$state = $matches[2];
+				if ($this->isState($state))
+				{
+					$data['State'] = $state;
+					$data['City'] =  $city;
+					continue;
+				}
+			}
+
+		// sometimes there is no delimiter between the city, state and zip. check for that here.
+			if (! isset($data['State']) &&
+				 ! isset($data['City']) &&
+				 ! isset($data['Zip']) &&
+					preg_match("/^(.+) +(".$this->stateRegex.") +(".$this->zipRegex.")$/i", $piece,$matches))
+			{
+				
+				$city = $matches[1];
+				$state = $matches[2];
+				$zip = $matches[3];
+				if ($this->isState($state) && $this->isZip($zip))
+				{
+					$data['City'] =  $city;
+					$data['State'] = $state;
+					$data['Zip'] = $zip;					
+					continue;
+				}
+			}
+
+
+			if ( isset($data['State']) ||  isset($data['Zip']) )
+			{
+				// if piece has any digits, 
+				// city is everything after the digits
+				// and addresss is everything before
+				if (! isset($data['City']) && ! isset($data['Address']) )
+				{
+					if (preg_match('/^(.+[0-9]+)([^0-9]+)$/', $piece,$matches))
+					{						
+						$data['City'] = $matches[2];
+						$data['Address'] = $matches[1];
+					}
+				}
+
+				if (! isset($data['City']) )
+				{
+					//log::info("setting city to $piece");
+					$data['City'] =  $piece;
+					continue;
+				}
+				
+
+				if (! isset($data['Address2']) )
+				{					
+					/*	Secondary Address Unit Designators 
+						extenstions such as suite and apt etc.
+					*/
+					foreach($this->extensionSuffixes as $suffix)
+					{
+
+						$regex = "/^$suffix\s*([0-9a-z\-#])+$/i";
+						if (preg_match($regex,$piece,$matches))
+						{
+							// suffix (apt/suite) = value (801b)
+							$data['Address2'] = $matches[0];
+
+							// WOOOOOOOT
+							// http://stackoverflow.com/questions/4270102/php-foreach-continue
+							continue 2;
+						}
+					}
+				}
+
+
+				if (empty($data['Address']) || !preg_match("/\s/", $data['Address']))
+				{
+					if (!empty($data['Address']) && !preg_match("/\s/", $data['Address']))
+						$extra = $data['Address'];
+
+					// by default take the last peice. 
+					$data['Address'] =  $piece;
+					continue;
+				}
+
+			}
+		}
+
+		if (!empty($extra)) // THIS IS AN UGLY HACK !!!
+		{
+			if ( strpos($data['Address'], $extra) === False )
+				$data['Address'] .= " $extra";
+		}
+
+
+
+			// try again, but harder!
+		if (! isset($data['Address']) && !$looseChecking )
+		{
+			return $this->parse($address,true);
+		}
+
+		return db::normalize($data);
+	}
+
+
+	// Grabs a state from $string
+	// returns empty string if $string isn't a state.
+	private function isState($state)
+	{		
+		$state = strtoupper($state);
+
+		if (in_array($state, $this->states))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	// Grabs a country from $string
+	// returns empty string if $string isn't a country.
+	private function isCountry($country)
+	{
+		$country = strtoupper($country);
+		if (in_array($country, $this->countries))
+		{
+			return true;
+		}
+		return false;
+	}
+
+
+	// Grabs a zip from $string
+	// returns empty string if $string isn't a zip.
+	private function isZip($zip)
+	{
+
+		$zip = strtoupper($zip);
+
+		//log::info("Checking $zip with $this->zipRegex");
+		// us zip can be 5 or 9 digits		
+		// we have to take into acoount zip codes that are only three or four digits cause they begin with 0. For example; Rhode Island is 2842 or 02842
+		if ( preg_match("/^".$this->zipRegex."$/i", $zip,$matches))
+		{
+			return true;
+		}
+
+		// no support for canadian zip codes yet
+		return false;
+	}
+
+	// pulls a zip code out of a string
+	public function findZip($string)
+	{
+		if ( preg_match("/(".$this->zipRegex.")/i", $zip,$matches))
+		{
+			return $matches[1];
+		}
+	}
+
+	// we only support USA and Canada
+	private $countries = array('USA', 'US', 'United States', 'Canada', 'AFGHANISTAN', 'ÅLAND ISLANDS', 'ALBANIA', 'ALGERIA', 'AMERICAN SAMOA', 'ANDORRA', 'ANGOLA', 'ANGUILLA', 'ANTARCTICA', 'ANTIGUA AND BARBUDA', 'ARGENTINA', 'ARMENIA', 'ARUBA', 'AUSTRALIA', 'AUSTRIA', 'AZERBAIJAN', 'BAHAMAS', 'BAHRAIN', 'BANGLADESH', 'BARBADOS', 'BELARUS', 'BELGIUM', 'BELIZE', 'BENIN', 'BERMUDA', 'BHUTAN', 'BOLIVIA, PLURINATIONAL STATE OF', 'BONAIRE, SINT EUSTATIUS AND SABA', 'BOSNIA AND HERZEGOVINA', 'BOTSWANA', 'BOUVET ISLAND', 'BRAZIL', 'BRITISH INDIAN OCEAN TERRITORY', 'BRUNEI DARUSSALAM', 'BULGARIA', 'BURKINA FASO', 'BURUNDI', 'CAMBODIA', 'CAMEROON', 'CANADA', 'CAPE VERDE', 'CAYMAN ISLANDS', 'CENTRAL AFRICAN REPUBLIC', 'CHAD', 'CHILE', 'CHINA', 'CHRISTMAS ISLAND', 'COCOS (KEELING) ISLANDS', 'COLOMBIA', 'COMOROS', 'CONGO', 'CONGO', 'COOK ISLANDS', 'COSTA RICA', 'CÔTE D\'IVOIRE', 'COTE DIVOIRE', 'CROATIA', 'CUBA', 'CURAÇAO', 'CYPRUS', 'CZECH REPUBLIC', 'DENMARK', 'DJIBOUTI', 'DOMINICA', 'DOMINICAN REPUBLIC', 'ECUADOR', 'EGYPT', 'EL SALVADOR', 'EQUATORIAL GUINEA', 'ERITREA', 'ESTONIA', 'ETHIOPIA', 'FALKLAND ISLANDS (MALVINAS)', 'FAROE ISLANDS', 'FIJI', 'FINLAND', 'FRANCE', 'FRENCH GUIANA', 'FRENCH POLYNESIA', 'FRENCH SOUTHERN TERRITORIES', 'GABON', 'GAMBIA', 'GEORGIA', 'GERMANY', 'GHANA', 'GIBRALTAR', 'GREECE', 'GREENLAND', 'GRENADA', 'GUADELOUPE', 'GUAM', 'GUATEMALA', 'GUERNSEY', 'GUINEA', 'GUINEA-BISSAU', 'GUYANA', 'HAITI', 'HEARD ISLAND AND MCDONALD ISLANDS', 'HOLY SEE (VATICAN CITY STATE)', 'HONDURAS', 'HONG KONG', 'HUNGARY', 'ICELAND', 'INDIA', 'INDONESIA', 'IRAN', 'IRAQ', 'IRELAND', 'ISLE OF MAN', 'ISRAEL', 'ITALY', 'JAMAICA', 'JAPAN', 'JERSEY', 'JORDAN', 'KAZAKHSTAN', 'KENYA', 'KIRIBATI', 'KOREA', 'KUWAIT', 'KYRGYZSTAN', 'LATVIA', 'LEBANON', 'LESOTHO', 'LIBERIA', 'LIBYAN ARAB JAMAHIRIYA', 'LIECHTENSTEIN', 'LITHUANIA', 'LUXEMBOURG', 'MACAO', 'MACEDONIA','YUGOSLAV', 'MADAGASCAR', 'MALAWI', 'MALAYSIA', 'MALDIVES', 'MALI', 'MALTA', 'MARSHALL ISLANDS', 'MARTINIQUE', 'MAURITANIA', 'MAURITIUS', 'MAYOTTE', 'MEXICO', 'MICRONESIA, FEDERATED STATES OF', 'MOLDOVA', 'MONACO', 'MONGOLIA', 'MONTENEGRO', 'MONTSERRAT', 'MOROCCO', 'MOZAMBIQUE', 'MYANMAR', 'NAMIBIA', 'NAURU', 'NEPAL', 'NETHERLANDS', 'NEW CALEDONIA', 'NEW ZEALAND', 'NICARAGUA', 'NIGER', 'NIGERIA', 'NIUE', 'NORFOLK ISLAND', 'NORTHERN MARIANA ISLANDS', 'NORWAY', 'OMAN', 'PAKISTAN', 'PALAU', 'PALESTINIAN TERRITORY, OCCUPIED', 'PANAMA', 'PAPUA NEW GUINEA', 'PARAGUAY', 'PERU', 'PHILIPPINES', 'PITCAIRN', 'POLAND', 'PORTUGAL', 'PUERTO RICO', 'QATAR', 'RÉUNION', 'ROMANIA', 'RUSSIAN FEDERATION', 'RWANDA', 'SAINT BARTHÉLEMY', 'SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA', 'SAINT KITTS AND NEVIS', 'SAINT LUCIA', 'SAINT MARTIN (FRENCH PART)', 'SAINT PIERRE AND MIQUELON', 'SAINT VINCENT AND THE GRENADINES', 'SAMOA', 'SAN MARINO', 'SAO TOME AND PRINCIPE', 'SAUDI ARABIA', 'SENEGAL', 'SERBIA', 'SEYCHELLES', 'SIERRA LEONE', 'SINGAPORE', 'SINT MAARTEN (DUTCH PART)', 'SLOVAKIA', 'SLOVENIA', 'SOLOMON ISLANDS', 'SOMALIA', 'SOUTH AFRICA', 'SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS', 'SPAIN', 'SRI LANKA', 'SUDAN', 'SURINAME', 'SVALBARD AND JAN MAYEN', 'SWAZILAND', 'SWEDEN', 'SWITZERLAND', 'SYRIAN ARAB REPUBLIC', 'TAIWAN, PROVINCE OF CHINA', 'TAJIKISTAN', 'TANZANIA', 'THAILAND', 'TIMOR-LESTE', 'TOGO', 'TOKELAU', 'TONGA', 'TRINIDAD AND TOBAGO', 'TUNISIA', 'TURKEY', 'TURKMENISTAN', 'TURKS AND CAICOS ISLANDS', 'TUVALU', 'UGANDA', 'UKRAINE', 'UNITED ARAB EMIRATES', 'UNITED KINGDOM', 'UNITED STATES', 'URUGUAY', 'UZBEKISTAN', 'VANUATU', 'VENEZUELA', 'VIET NAM', 'VIRGIN ISLANDS, BRITISH', 'VIRGIN ISLANDS', 'WALLIS AND FUTUNA', 'WESTERN SAHARA', 'YEMEN', 'ZAMBIA', 'ZIMBABWE');
+
+	private $states = array('ALABAMA', 'AL', 'ALASKA', 'AK', 'AMERICAN SAMOA', 'AS', 'ARIZONA', 'AZ', 'ARKANSAS', 'AR', 'CALIFORNIA', 'CA', 'COLORADO', 'CO', 'CONNECTICUT', 'CT', 'DELAWARE', 'DE', 'DISTRICT OF COLUMBIA', 'DC', 'FEDERATED STATES OF MICRONESIA', 'FM', 'FLORIDA', 'FL', 'GEORGIA', 'GA', 'GUAM', 'GU', 'HAWAII', 'HI', 'IDAHO', 'ID', 'ILLINOIS', 'IL', 'INDIANA', 'IN', 'IOWA', 'IA', 'KANSAS', 'KS', 'KENTUCKY', 'KY', 'LOUISIANA', 'LA', 'MAINE', 'ME', 'MARSHALL ISLANDS', 'MH', 'MARYLAND', 'MD', 'MASSACHUSETTS', 'MA', 'MICHIGAN', 'MI', 'MINNESOTA', 'MN', 'MISSISSIPPI', 'MS', 'MISSOURI', 'MO', 'MONTANA', 'MT', 'NEBRASKA', 'NE', 'NEVADA', 'NV', 'NEW HAMPSHIRE', 'NH', 'NEW JERSEY', 'NJ', 'NEW MEXICO', 'NM', 'NEW YORK', 'NY', 'NORTH CAROLINA', 'NC', 'NORTH DAKOTA', 'ND', 'NORTHERN MARIANA ISLANDS', 'MP', 'OHIO', 'OH', 'OKLAHOMA', 'OK', 'OREGON', 'OR', 'PALAU', 'PW', 'PENNSYLVANIA', 'PA', 'PUERTO RICO', 'PR', 'RHODE ISLAND', 'RI', 'SOUTH CAROLINA', 'SC', 'SOUTH DAKOTA', 'SD', 'TENNESSEE', 'TN', 'TEXAS', 'TX', 'UTAH', 'UT', 'VERMONT', 'VT', 'VIRGIN ISLANDS', 'VI', 'VIRGINIA', 'VA', 'WASHINGTON', 'WA', 'WEST VIRGINIA', 'WV', 'WISCONSIN', 'WI', 'WYOMING', 'WY', 'ARMED FORCES AFRICA', 'AE', 'ARMED FORCES AMERICAS', 'AA', 'ARMED FORCES CANADA', 'AE', 'ARMED FORCES EUROPE', 'AE', 'ARMED FORCES MIDDLE EAST', 'AE', 'ARMED FORCES PACIFIC', 'AP', 'ALBERTA', 'AB', 'BRITISH COLUMBIA', 'BC', 'MANITOBA', 'MB', 'NEW BRUNSWICK', 'NB', 'NEWFOUNDLAND AND LABRADOR', 'NL', 'NORTHWEST TERRITORIES', 'NT', 'NOVA SCOTIA', 'NS', 'NUNAVUT', 'NU', 'ONTARIO', 'ON', 'PRINCE EDWARD ISLAND', 'PE', 'QUEBEC', 'QC', 'SASKATCHEWAN', 'SK', 'YUKON', 'YT');
+	
+	private $streetSuffixes= array ('ALLEY','ALLEE','ALY','ALLEY','ALLY','ALY','ANNEX','ANEX','ANX','ANNEX','ANNX','ANX','ARCADE','ARC','ARC','ARCADE','AVENUE','AV','AVE','AVE','AVEN','AVENU','AVENUE','AVN','AVNUE','BAYOU','BAYOO','BYU','BAYOU','BEACH','BCH','BCH','BEACH','BEND','BEND','BND','BND','BLUFF','BLF','BLF','BLUF','BLUFF','BLUFFS','BLUFFS','BLFS','BOTTOM','BOT','BTM','BTM','BOT™','BOTTOM','BOULEVARD','BLVD','BLVD','BOUL','BOULEVARD','BOULV','BRANCH','BR','BR','BRNCH','BRANCH','BRIDGE','BRDGE','BRG','BRG','BRIDGE','BROOK','BRK','BRK','BROOK','BROOKS','BROOKS','BRKS','BURG','BURG','BG','BURGS','BURGS','BGS','BYPASS','BYP','BYP','BYPA','BYPAS','BYPASS','BYPS','CAMP','CAMP','CP','CP','CMP','CANYON','CANYN','CYN','CANYON','CNYN','CAPE','CAPE','CPE','CPE','CAUSEWAY','CAUSEWAY','CSWY','CAUSWAY','CSWY','CENTER','CEN','CTR','CENT','CENTER','CENTR','CENTRE','CNTER','CNTR','CTR','CENTERS','CENTERS','CTRS','CIRCLE','CIR','CIR','CIRC','CIRCL','CIRCLE','CRCL','CRCLE','CIRCLES','CIRCLES','CIRS','CLIFF','CLF','CLF','CLIFF','CLIFFS','CLFS','CLFS','CLIFFS','CLUB','CLB','CLB','CLUB','COMMON','COMMON','CMN','COMMONS','COMMONS','CMNS','CORNER','COR','COR','CORNER','CORNERS','CORNERS','CORS','CORS','COURSE','COURSE','CRSE','CRSE','COURT','COURT','CT','CT','COURTS','COURTS','CTS','CTS','COVE','COVE','CV','CV','COVES','COVES','CVS','CREEK','CREEK','CRK','CRK','CRESCENT','CRESCENT','CRES','','CRES','CRSENT','CRSNT','CREST','CREST','CRST','CROSSING','CROSSING','XING','CRSSNG','XING','CROSSROAD','CROSSROAD','XRD','CROSSROADS','CROSSROADS','XRDS','CURVE','CURVE','CURV','DALE','DALE','DL','DL','DAM','DAM','DM','DM','DIVIDE','DIV','DV','DIVIDE','DV','DVD','DRIVE','DR','DR','DRIV','DRIVE','DRV','DRIVES','DRIVES','DRS','ESTATE','EST','EST','ESTATE','ESTATES','ESTATES','ESTS','ESTS','EXPRESSWAY','EXP','EXPY','EXPR','EXPRESS','EXPRESSWAY','EXPW','EXPY','EXTENSION','EXT','EXT','EXTENSION','EXTN','EXTNSN','EXTENSIONS','EXTS','EXTS','FALL','FALL','FALL','FALLS','FALLS','FLS','FLS','FERRY','FERRY','FRY','FRRY','FRY','FIELD','FIELD','FLD','FLD','FIELDS','FIELDS','FLDS','FLDS','FLAT','FLAT','FLT','FLT','FLATS','FLATS','FLTS','FLTS','FORD','FORD','FRD','FRD','FORDS','FORDS','FRDS','FOREST','FOREST','FRST','FORESTS','FRST','FORGE','FORG','FRG','FORGE','FRG','FORGES','FORGES','FRGS','FORK','FORK','FRK','FRK','FORKS','FORKS','FRKS','FRKS','FORT','FORT','FT','FRT','FT','FREEWAY','FREEWAY','FWY','FREEWY','FRWAY','FRWY','FWY','GARDEN','GARDEN','GDN','GARDN','GRDEN','GRDN','GARDENS','GARDENS','GDNS','GDNS','GRDNS','GATEWAY','GATEWAY','GTWY','GATEWY','GATWAY','GTWAY','GTWY','GLEN','GLEN','GLN','GLN','GLENS','GLENS','GLNS','GREEN','GREEN','GRN','GRN','GREENS','GREENS','GRNS','GROVE','GROV','GRV','GROVE','GRV','GROVES','GROVES','GRVS','HARBOR','HARB','HBR','HARBOR','HARBR','HBR','HRBOR','HARBORS','HARBORS','HBRS','HAVEN','HAVEN','HVN','HVN','HEIGHTS','HT','HTS','HTS','HIGHWAY','HIGHWAY','HWY','HIGHWY','HIWAY','HIWY','HWAY','HWY','HILL','HILL','HL','HL','HILLS','HILLS','HLS','HLS','HOLLOW','HLLW','HOLW','HOLLOW','HOLLOWS','HOLW','HOLWS','INLET','INLT','INLT','ISLAND','IS','IS','ISLAND','ISLND','ISLANDS','ISLANDS','ISS','ISLNDS','ISS','ISLE','ISLE','ISLE','ISLES','JUNCTION','JCT','JCT','JCTION','JCTN','JUNCTION','JUNCTN','JUNCTON','JUNCTIONS','JCTNS','JCTS','JCTS','JUNCTIONS','KEY','KEY','KY','KY','KEYS','KEYS','KYS','KYS','KNOLL','KNL','KNL','KNOL','KNOLL','KNOLLS','KNLS','KNLS','KNOLLS','LAKE','LK','LK','LAKE','LAKES','LKS','LKS','LAKES','LAND','LAND','LAND','LANDING','LANDING','LNDG','LNDG','LNDNG','LANE','LANE','LN','LN','LIGHT','LGT','LGT','LIGHT','LIGHTS','LIGHTS','LGTS','LOAF','LF','LF','LOAF','LOCK','LCK','LCK','LOCK','LOCKS','LCKS','LCKS','LOCKS','LODGE','LDG','LDG','LDGE','LODG','LODGE','LOOP','LOOP','LOOP','LOOPS','MALL','MALL','MALL','MANOR','MNR','MNR','MANOR','MANORS','MANORS','MNRS','MNRS','MEADOW','MEADOW','MDW','MEADOWS','MDW','MDWS','MDWS','MEADOWS','MEDOWS','MEWS','MEWS','MEWS','MILL','MILL','ML','MILLS','MILLS','MLS','MISSION','MISSN','MSN','MSSN','MOTORWAY','MOTORWAY','MTWY','MOUNT','MNT','MT','MT','MOUNT','MOUNTAIN','MNTAIN','MTN','MNTN','MOUNTAIN','MOUNTIN','MTIN','MTN','MOUNTAINS','MNTNS','MTNS','MOUNTAINS','NECK','NCK','NCK','NECK','ORCHARD','ORCH','ORCH','ORCHARD','ORCHRD','OVAL','OVAL','OVAL','OVL','OVERPASS','OVERPASS','OPAS','PARK','PARK','PARK','PRK','PARKS','PARKS','PARK','PARKWAY','PARKWAY','PKWY','PARKWY','PKWAY','PKWY','PKY','PARKWAYS','PARKWAYS','PKWY','PKWYS','PASS','PASS','PASS','PASSAGE','PASSAGE','PSGE','PATH','PATH','PATH','PATHS','PIKE','PIKE','PIKE','PIKES','PINE','PINE','PNE','PINES','PINES','PNES','PNES','PLACE','PL','PL','PLAIN','PLAIN','PLN','PLN','PLAINS','PLAINS','PLNS','PLNS','PLAZA','PLAZA','PLZ','PLZ','PLZA','POINT','POINT','PT','PT','POINTS','POINTS','PTS','PTS','PORT','PORT','PRT','PRT','PORTS','PORTS','PRTS','PRTS','PRAIRIE','PR','PR','PRAIRIE','PRR','RADIAL','RAD','RADL','RADIAL','RADIEL','RADL','RAMP','RAMP','RAMP','RANCH','RANCH','RNCH','RANCHES','RNCH','RNCHS','RAPID','RAPID','RPD','RPD','RAPIDS','RAPIDS','RPDS','RPDS','REST','REST','RST','RST','RIDGE','RDG','RDG','RDGE','RIDGE','RIDGES','RDGS','RDGS','RIDGES','RIVER','RIV','RIV','RIVER','RVR','RIVR','ROAD','RD','RD','ROAD','ROADS','ROADS','RDS','RDS','ROUTE','ROUTE','RTE','ROW','ROW','ROW','RUE','RUE','RUE','RUN','RUN','RUN','SHOAL','SHL','SHL','SHOAL','SHOALS','SHLS','SHLS','SHOALS','SHORE','SHOAR','SHR','SHORE','SHR','SHORES','SHOARS','SHRS','SHORES','SHRS','SKYWAY','SKYWAY','SKWY','SPRING','SPG','SPG','SPNG','SPRING','SPRNG','SPRINGS','SPGS','SPGS','SPNGS','SPRINGS','SPRNGS','SPUR','SPUR','SPUR','SPURS','SPURS','SPUR','SQUARE','SQ','SQ','SQR','SQRE','SQU','SQUARE','SQUARES','SQRS','SQS','SQUARES','STATION','STA','STA','STATION','STATN','STN','STRAVENUE','STRA','STRA','STRAV','STRAVEN','STRAVENUE','STRAVN','STRVN','STRVNUE','STREAM','STREAM','STRM','STREME','STRM','STREET','STREET','ST','STRT','ST','STR','STREETS','STREETS','STS','SUMMIT','SMT','SMT','SUMIT','SUMITT','SUMMIT','TERRACE','TER','TER','TERR','TERRACE','THROUGHWAY','THROUGHWAY','TRWY','TRACE','TRACE','TRCE','TRACES','TRCE','TRACK','TRACK','TRAK','TRACKS','TRAK','TRK','TRKS','TRAFFICWAY','TRAFFICWAY','TRFY','TRAIL','TRAIL','TRL','TRAILS','TRL','TRLS','TRAILER','TRAILER','TRLR','TRLR','TRLRS','TUNNEL','TUNEL','TUNL','TUNL','TUNLS','TUNNEL','TUNNELS','TUNNL','TURNPIKE','TRNPK','TPKE','TURNPIKE','TURNPK','UNDERPASS','UNDERPASS','UPAS','UNION','UN','UN','UNION','UNIONS','UNIONS','UNS','VALLEY','VALLEY','VLY','VALLY','VLLY','VLY','VALLEYS','VALLEYS','VLYS','VLYS','VIADUCT','VDCT','VIA','VIA','VIADCT','VIADUCT','VIEW','VIEW','VW','VW','VIEWS','VIEWS','VWS','VWS','VILLAGE','VILL','VLG','VILLAG','VILLAGE','VILLG','VILLIAGE','VLG','VILLAGES','VILLAGES','VLGS','VLGS','VILLE','VILLE','VL','VL','VISTA','VIS','VIS','VIST','VISTA','VST','VSTA','WALK','WALK','WALK','WALKS','WALKS','WALK','WALL','WALL','WALL','WAY','WY','WAY','WAY','WAYS','WAYS','WAYS','WELL','WELL','WL','WELLS','WELLS','WLS','WLS');
+
+	private $extensionSuffixes= array('APT','APARTMENT', 'SUITE', 'STE','BLDG','BUILDING', 'FLOOR','UNIT','RM','ROOM','DEPT','DEPARTMENT', '#','FL');
+
+}

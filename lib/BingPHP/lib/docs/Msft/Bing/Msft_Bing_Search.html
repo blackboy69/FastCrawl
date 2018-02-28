@@ -1,0 +1,1946 @@
+<html>
+<head>
+<title>Docs For Class Msft_Bing_Search</title>
+<link rel="stylesheet" type="text/css" href="../../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">Msft</td>
+  </tr>
+  <tr><td class="header_line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                    
+                              		  [ <a href="../../classtrees_Msft.html" class="menu">class tree: Msft</a> ]
+		  [ <a href="../../elementindex_Msft.html" class="menu">index: Msft</a> ]
+		  	    [ <a href="../../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+	<div id="todolist">
+			<p><a href="../../todolist.html">Todo List</a></p>
+	</div>
+      <b>Packages:</b><br />
+              <a href="../../li_Msft.html">Msft</a><br />
+            <br /><br />
+                        <b>Files:</b><br />
+      	  <div class="package">
+			<a href="../../Msft/_Exception.php.html">		Exception.php
+		</a><br>
+			<a href="../../Msft/_Bing---Exception.php.html">		Exception.php
+		</a><br>
+			<a href="../../Msft/_Bing---Search---Exception.php.html">		Exception.php
+		</a><br>
+			<a href="../../Msft/_Bing---Search.php.html">		Search.php
+		</a><br>
+	  </div><br />
+      
+      
+            <b>Classes:</b><br />
+        <div class="package">
+	Bing<br />	    &nbsp;&nbsp;		<a href="../../Msft/Bing/Msft_Bing_Exception.html">Msft_Bing_Exception</a><br />
+	    &nbsp;&nbsp;		<a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a><br />
+	    &nbsp;&nbsp;		<a href="../../Msft/Bing/Msft_Bing_Search_Exception.html">Msft_Bing_Search_Exception</a><br />
+	    &nbsp;&nbsp;		<a href="../../Msft/Bing/Msft_Exception.html">Msft_Exception</a><br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: Msft_Bing_Search</h1>
+Source Location: /Bing/Search.php<br /><br />
+
+
+<table width="100%" border="0">
+<tr><td valign="top">
+
+<h3><a href="#class_details">Class Overview</a></h3>
+<pre></pre><br />
+<div class="description">Search class for the Bing Search API.</div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+          <li>Cal Evans </li>
+                                                                  </ul>
+
+
+
+
+                                            
+
+        
+</td>
+
+<td valign="top">
+<h3><a href="#class_vars">Variables</a></h3>
+<ul>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$adult">$adult</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$appid">$appid</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$baseUrl">$baseUrl</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$filetype">$filetype</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$flags">$flags</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$format">$format</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$imagecount">$imagecount</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$jsontype">$jsontype</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$market">$market</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$query">$query</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$site">$site</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$sources">$sources</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$url">$url</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$validFileTypes">$validFileTypes</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$validFlags">$validFlags</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$validFormatOptions">$validFormatOptions</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$validFormats">$validFormats</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$validSources">$validSources</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$version">$version</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$webcount">$webcount</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$weboffset">$weboffset</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#var$xmltype">$xmltype</a></li>
+  </ul>
+</td>
+
+
+<td valign="top">
+<h3><a href="#class_methods">Methods</a></h3>
+<ul>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#method__construct">__construct</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodbetween">between</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodbuildUrl">buildUrl</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetAdult">getAdult</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetAppId">getAppId</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetBaseUrl">getBaseUrl</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetFileTypes">getFileTypes</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetFlags">getFlags</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetFormat">getFormat</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetFormatOption">getFormatOption</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetImageCount">getImageCount</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetMarket">getMarket</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetParameter">getParameter</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetQuery">getQuery</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetSite">getSite</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetSources">getSources</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetUrl">getUrl</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetVersion">getVersion</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetWebCount">getWebCount</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodgetWebOffset">getWebOffset</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodisSiteSpecific">isSiteSpecific</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsearch">search</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetAdult">setAdult</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetAppId">setAppId</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetBaseUrl">setBaseUrl</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetFileType">setFileType</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetFlag">setFlag</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetFormat">setFormat</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetFormatOption">setFormatOption</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetImageCount">setImageCount</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetMarket">setMarket</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetQuery">setQuery</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetSite">setSite</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetSource">setSource</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetVersion">setVersion</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetWebCount">setWebCount</a></li>
+    <li><a href="../../Msft/Bing/Msft_Bing_Search.html#methodsetWebOffset">setWebOffset</a></li>
+  </ul>
+</td>
+
+</tr></table>
+<hr />
+
+<table width="100%" border="0"><tr>
+
+
+
+
+
+
+</tr></table>
+<hr />
+
+<a name="class_details"></a>
+<h3>Class Details</h3>
+<div class="tags">
+[line 39]<br />
+Search class for the Bing Search API.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>Cal Evans </td>
+  </tr>
+  <tr>
+    <td><b>link:</b>&nbsp;&nbsp;</td><td><a href="http://bingphp.codeplex.com">http://bingphp.codeplex.com</a></td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Implement InstanceAnswer sourceType</td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Implement new returnType that is a PHP class.</td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Implement PhonebookSearch sourceType</td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Implement MobileWeb sourceType</td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Implement Video sourceType</td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Implement News sourceType</td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Implement Translation sourceType</td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Implement RelatedSearch sourceType</td>
+  </tr>
+  <tr>
+    <td><b>license:</b>&nbsp;&nbsp;</td><td>New BSD License (BSD)</td>
+  </tr>
+</table>
+</div>
+</div><br /><br />
+<div class="top">[ <a href="#top">Top</a> ]</div><br />
+
+<hr />
+<a name="class_vars"></a>
+<h3>Class Variables</h3>
+<div class="tags">
+	<a name="var$adult"></a>
+	<p></p>
+	<h4>$adult = <span class="value">&nbsp;'Moderate'</span></h4>
+	<p>[line 47]</p>
+  Adult filter setting<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>var:</b>&nbsp;&nbsp;</td><td>Off|Moderate|Strict</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$appid"></a>
+	<p></p>
+	<h4>$appid = <span class="value">&nbsp;''</span></h4>
+	<p>[line 54]</p>
+  Bing Application ID - http://www.bing.com/developers/createapp.aspx<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$baseUrl"></a>
+	<p></p>
+	<h4>$baseUrl = <span class="value">&nbsp;'http://api.bing.net/'</span></h4>
+	<p>[line 61]</p>
+  Base bing URL<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>var:</b>&nbsp;&nbsp;</td><td>http://api.bing.net/</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$filetype"></a>
+	<p></p>
+	<h4>$filetype = <span class="value">array()</span></h4>
+	<p>[line 75]</p>
+  List of preferred file types to return<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$flags"></a>
+	<p></p>
+	<h4>$flags = <span class="value">array()</span></h4>
+	<p>[line 68]</p>
+  Flags that have been set.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$format"></a>
+	<p></p>
+	<h4>$format = <span class="value">&nbsp;'json'</span></h4>
+	<p>[line 82]</p>
+  Output format (json|xml)<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$imagecount"></a>
+	<p></p>
+	<h4>$imagecount = <span class="value">&nbsp;10</span></h4>
+	<p>[line 89]</p>
+  Number of image results to return (1-100)<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$jsontype"></a>
+	<p></p>
+	<h4>$jsontype = <span class="value">&nbsp;'raw'</span></h4>
+	<p>[line 96]</p>
+  JSON format option (raw|callback)<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$market"></a>
+	<p></p>
+	<h4>$market = <span class="value">&nbsp;''</span></h4>
+	<p>[line 103]</p>
+  Language (see http://msdn.microsoft.com/en-us/library/dd251064.aspx)<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$query"></a>
+	<p></p>
+	<h4>$query = <span class="value">&nbsp;''</span></h4>
+	<p>[line 110]</p>
+  The query string<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$site"></a>
+	<p></p>
+	<h4>$site = <span class="value">&nbsp;''</span></h4>
+	<p>[line 117]</p>
+  Site to limit the search to<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$sources"></a>
+	<p></p>
+	<h4>$sources = <span class="value">array()</span></h4>
+	<p>[line 124]</p>
+  Sources to draw from when searching [web|image|spell]<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$url"></a>
+	<p></p>
+	<h4>$url = <span class="value">&nbsp;null</span></h4>
+	<p>[line 173]</p>
+  URL used in the last search performed by the class<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$validFileTypes"></a>
+	<p></p>
+	<h4>$validFileTypes = <span class="value">array()</span></h4>
+	<p>[line 131]</p>
+  Valid file types that can be specified.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$validFlags"></a>
+	<p></p>
+	<h4>$validFlags = <span class="value">array()</span></h4>
+	<p>[line 138]</p>
+  Valid flags that can be specified.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$validFormatOptions"></a>
+	<p></p>
+	<h4>$validFormatOptions = <span class="value">array()</span></h4>
+	<p>[line 152]</p>
+  Valid formats options that can be specified.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$validFormats"></a>
+	<p></p>
+	<h4>$validFormats = <span class="value">array()</span></h4>
+	<p>[line 145]</p>
+  Valid formats that can be specified.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$validSources"></a>
+	<p></p>
+	<h4>$validSources = <span class="value">array()</span></h4>
+	<p>[line 159]</p>
+  Valid sources that can be specified.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$version"></a>
+	<p></p>
+	<h4>$version = <span class="value">&nbsp;2.2</span></h4>
+	<p>[line 166]</p>
+  API version (2.0|2.2)<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>number</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$webcount"></a>
+	<p></p>
+	<h4>$webcount = <span class="value">&nbsp;10</span></h4>
+	<p>[line 180]</p>
+  Number of web results to return (1-100)<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$weboffset"></a>
+	<p></p>
+	<h4>$weboffset = <span class="value">&nbsp;null</span></h4>
+	<p>[line 187]</p>
+  Offset from 0 to begin the list of urls returned. (0-100)<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$xmltype"></a>
+	<p></p>
+	<h4>$xmltype = <span class="value">&nbsp;''</span></h4>
+	<p>[line 194]</p>
+  XML output type specified<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+</div><br />
+
+<hr />
+<a name="class_methods"></a>
+<h3>Class Methods</h3>
+<div class="tags">
+
+  <hr />
+	<a name="method__construct"></a>
+	<h3>constructor __construct <span class="smalllinenumber">[line 202]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>Msft_Bing_Search __construct(
+[string
+$appId = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		constructor<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$appId</b>&nbsp;&nbsp;</td>
+        <td>The Bing APP ID</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodbetween"></a>
+	<h3>method between <span class="smalllinenumber">[line 292]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>number between(
+number
+$value, number
+$min, number
+$max)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Return either the value passed in if it's between the min and max or the  min or max.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">number&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The value to check</td>
+      </tr>
+          <tr>
+        <td class="type">number&nbsp;&nbsp;</td>
+        <td><b>$min</b>&nbsp;&nbsp;</td>
+        <td>The minimum allowable value</td>
+      </tr>
+          <tr>
+        <td class="type">number&nbsp;&nbsp;</td>
+        <td><b>$max</b>&nbsp;&nbsp;</td>
+        <td>The maximum allowable value</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodbuildUrl"></a>
+	<h3>method buildUrl <span class="smalllinenumber">[line 258]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string buildUrl(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Construct the URL used in the search<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>the url</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetAdult"></a>
+	<h3>method getAdult <span class="smalllinenumber">[line 349]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getAdult(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the value of the adult filter<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetAppId"></a>
+	<h3>method getAppId <span class="smalllinenumber">[line 373]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getAppId(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the AppID currently set in the object<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetBaseUrl"></a>
+	<h3>method getBaseUrl <span class="smalllinenumber">[line 399]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getBaseUrl(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the value of the base Bing URL<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetFileTypes"></a>
+	<h3>method getFileTypes <span class="smalllinenumber">[line 614]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>array getFileTypes(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the array of preferred file types for the object<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetFlags"></a>
+	<h3>method getFlags <span class="smalllinenumber">[line 653]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>array getFlags(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the array of flags specified for the object<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetFormat"></a>
+	<h3>method getFormat <span class="smalllinenumber">[line 473]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getFormat(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the requested result format<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetFormatOption"></a>
+	<h3>method getFormatOption <span class="smalllinenumber">[line 511]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getFormatOption(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the value of the specified format options.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetImageCount"></a>
+	<h3>method getImageCount <span class="smalllinenumber">[line 449]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getImageCount(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the maximum number of image results to be requested<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetMarket"></a>
+	<h3>method getMarket <span class="smalllinenumber">[line 542]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getMarket(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the language of the results<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetParameter"></a>
+	<h3>method getParameter <span class="smalllinenumber">[line 313]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>mixed getParameter(
+string
+$name, [boolean
+$ignoreAmpersand = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Properly format and urlencode the key=value pair requested.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>Msft_Bing_Search_Exception</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>The name of the parameter</td>
+      </tr>
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$ignoreAmpersand</b>&nbsp;&nbsp;</td>
+        <td>If true, does not prepend the output with                                  an ampersand. Default behaviour is to                                  prepend the ampersand.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetQuery"></a>
+	<h3>method getQuery <span class="smalllinenumber">[line 732]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getQuery(
+[bool
+$encode = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the value of the search query<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$encode</b>&nbsp;&nbsp;</td>
+        <td>true if the return value should be urlencoded.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetSite"></a>
+	<h3>method getSite <span class="smalllinenumber">[line 766]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getSite(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the value of the site specified for a site-specific search.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetSources"></a>
+	<h3>method getSources <span class="smalllinenumber">[line 691]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>array getSources(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns an array of the sources specified for the object<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetUrl"></a>
+	<h3>method getUrl <span class="smalllinenumber">[line 805]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getUrl(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the URL of the last search executed by the object<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetVersion"></a>
+	<h3>method getVersion <span class="smalllinenumber">[line 590]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>float getVersion(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the value of the Bing API version used by the object<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetWebCount"></a>
+	<h3>method getWebCount <span class="smalllinenumber">[line 425]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getWebCount(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the maximum number of web results to be requested<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetWebOffset"></a>
+	<h3>method getWebOffset <span class="smalllinenumber">[line 566]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getWebOffset(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns the value of the requested result offset<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodisSiteSpecific"></a>
+	<h3>method isSiteSpecific <span class="smalllinenumber">[line 793]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean isSiteSpecific(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns true if the search is site specific<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsearch"></a>
+	<h3>method search <span class="smalllinenumber">[line 229]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string search(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Attempts to execute the currently-specified search<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>The results from the query</td>
+  </tr>
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>Msft_Bing_Search_Exception</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetAdult"></a>
+	<h3>method setAdult <span class="smalllinenumber">[line 361]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setAdult(
+string
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Sets the value for the adult filter<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The new value (Off|Moderate|Strict)</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetAppId"></a>
+	<h3>method setAppId <span class="smalllinenumber">[line 385]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setAppId(
+string
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Set the AppID for this object<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The Bing application id</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetBaseUrl"></a>
+	<h3>method setBaseUrl <span class="smalllinenumber">[line 411]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setBaseUrl(
+string
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Sets the value of the base Bing URL<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The new base url</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetFileType"></a>
+	<h3>method setFileType <span class="smalllinenumber">[line 628]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setFileType(
+string
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Toggles a value in the list of preferred file types.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>Msft_Bing_Search_Exception</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The value to be toggled</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetFlag"></a>
+	<h3>method setFlag <span class="smalllinenumber">[line 667]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setFlag(
+string
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Toggles a value in the list of acceptable flags.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>Msft_Bing_Search_Exception</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The value to be toggled</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetFormat"></a>
+	<h3>method setFormat <span class="smalllinenumber">[line 489]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setFormat(
+string
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Sets the value of the requested result format. format is validated  against validFormats. formatOption is reset to the first listed  validFormatOption. Other options are cleared.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>Msft_Bing_Search_Exception</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The new value</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetFormatOption"></a>
+	<h3>method setFormatOption <span class="smalllinenumber">[line 524]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setFormatOption(
+string
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Sets the specified format option. option is validated against  the validFormats array<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The new value</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetImageCount"></a>
+	<h3>method setImageCount <span class="smalllinenumber">[line 461]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setImageCount(
+int
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Sets the maximum number of image results to be requested<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>1-100 The new value of ImageSource.count</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetMarket"></a>
+	<h3>method setMarket <span class="smalllinenumber">[line 554]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setMarket(
+string
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Sets the language of the results<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The new value</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetQuery"></a>
+	<h3>method setQuery <span class="smalllinenumber">[line 754]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setQuery(
+string
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Sets the search query<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>the new value</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetSite"></a>
+	<h3>method setSite <span class="smalllinenumber">[line 778]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setSite(
+string
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Sets the site address for a site-specific search<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The site address (no http:// or https://)</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetSource"></a>
+	<h3>method setSource <span class="smalllinenumber">[line 706]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setSource(
+string
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Toggles a value in the list of requested sources<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>Msft_Bing_Search_Exception</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The value to be toggled</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetVersion"></a>
+	<h3>method setVersion <span class="smalllinenumber">[line 602]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setVersion(
+float
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Sets the value of the Bing API version to use<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">float&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The new value</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetWebCount"></a>
+	<h3>method setWebCount <span class="smalllinenumber">[line 437]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setWebCount(
+int
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		set the maximum number of web results to be requested<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>1-100 The new value of WebSource.count</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetWebOffset"></a>
+	<h3>method setWebOffset <span class="smalllinenumber">[line 578]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Msft/Bing/Msft_Bing_Search.html">Msft_Bing_Search</a> setWebOffset(
+integer
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Sets the value of the requested result offset<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>The new value</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+</div><br />
+
+
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Tue, 16 Mar 2010 20:30:45 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+java -classpath c:\dev\lib\java\resin.jar;c:\dev\lib\java\servlet-2.2.jar com.caucho.quercus.CliQuercus %1

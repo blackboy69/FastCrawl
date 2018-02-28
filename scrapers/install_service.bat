@@ -1,0 +1,1 @@
+D:\dev\FastCrawl-ScrapeForce\nssm-2.16\win32\nssm.exe install ScrapeForce d:\dev\FastCrawl-ScrapeForce\cron.bat

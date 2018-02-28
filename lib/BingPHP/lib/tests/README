@@ -1,0 +1,22 @@
+README FOR BING SDK for PHP UNIT TESTS
+======================================
+
+The library's functionality tests require a valid AppId from Bing in order to 
+run. You can obtain an AppId directly from the Bing Developer website at 
+http://www.bing.com/developer/.
+
+Installing the AppID
+====================
+
+In order to make the test suite recognize the App ID, you need to follow these 
+steps:
+
+1. Copy appid.php.template to appid.php
+2. Replace the words "YOUR APPID HERE" with the App ID provided by Bing
+
+
+Running the Tests
+=================
+
+The test suite is designed to be run using PHPUnit (http://phpunit.de/) 
+version 3.4.9 or higher.
